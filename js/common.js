@@ -120,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (
         entry.isIntersecting &&
+		window.innerWidth > 599.98 &&
         !animated
       ) {
         animated = true;
@@ -141,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", function () {
   const heroBgs = document.querySelector(".hero__bgs");
 
-  if (heroBgs && window.innerWidth > 1079.98) {
+  if (heroBgs && window.innerWidth > 599.98) {
     const slides = heroBgs.querySelectorAll("img");
     if (slides.length === 0) return;
 
@@ -152,6 +153,24 @@ document.addEventListener("DOMContentLoaded", function () {
       current = (current + 1) % slides.length;
       slides[current].classList.add("active");
     }, 5000);
+  }
+});
+
+//Hero slider Mob
+document.addEventListener("DOMContentLoaded", function () {
+  const mheroBgs = document.querySelector(".mhero__bgs");
+
+  if (mheroBgs && window.innerWidth <= 599.98) {
+    const slides = mheroBgs.querySelectorAll("img");
+    if (slides.length === 0) return;
+
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 4000);
   }
 });
 
