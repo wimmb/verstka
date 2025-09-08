@@ -13,7 +13,7 @@ $(document).ready(function () {
 		const swiper = new Swiper(reviews__carousel, {
 			slidesPerView: 'auto',
 			loop: true,
-      pagination: {
+      		pagination: {
       			el: '.reviews__pagination',
       			clickable: true,
     		},
@@ -205,6 +205,34 @@ document.addEventListener("DOMContentLoaded", function () {
   changeSlides();
 });
 
+//Team carousel
+document.addEventListener("DOMContentLoaded", function () {
+	const carousel = document.querySelector(".team__carousel");
+	if (!carousel) return;
+
+	let swiperInstance = null;
+	const breakpoint = 1079.98;
+
+	function initSwiper() {
+    if (window.innerWidth <= breakpoint && !swiperInstance) {
+      swiperInstance = new Swiper(".team__carousel", {
+        slidesPerView: 'auto',
+		loop: true,
+      	pagination: {
+      		el: '.team__pagination',
+      		clickable: true,
+    	},
+    });
+    } else if (window.innerWidth > breakpoint && swiperInstance) {
+    	swiperInstance.destroy(true, true);
+    	swiperInstance = null;
+    }
+	}
+
+	initSwiper();
+	window.addEventListener("resize", initSwiper);
+});
+
 // Toggles FAQ
 document.addEventListener('DOMContentLoaded', function () {
 	const toggleBlocks = document.querySelectorAll('.faq__toggle');
@@ -236,4 +264,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	});
+});
+
+// Scroll to Top
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollTopBtn = document.getElementById("scr_top");
+    const scrollOffset = 800;
+
+    window.addEventListener("scroll", () => {
+        scrollTopBtn.classList.toggle("visible", window.scrollY > scrollOffset);
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 });
