@@ -1870,9 +1870,31 @@ tr, td {
 
 .smap-sect {}
 
+.smap-sect .sect-header {
+	margin-bottom: 10px;
+}
+
 .smap__svgmap {
 	text-align: center;
-	padding-top: 20px;
+}
+
+.smap__svgmap svg {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.smap__svgmap svg path {
+	transition: fill 0.3s ease;
+	cursor: pointer;
+}
+
+.smap__svgmap svg path:hover {
+	fill: var(--accent-color) !important;
+}
+
+.smap__svgmap svg text {
+	pointer-events: none;
 }
 
 .bg__gradient {
