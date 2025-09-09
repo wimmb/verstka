@@ -7,7 +7,7 @@ $(document).ready(function () {
 		});
 	}
 
-  // Reviews carousel swiper
+	// Reviews carousel swiper
 	const reviews__carousel = document.querySelector('.reviews__carousel');
 	if (reviews__carousel) {
 		const swiper = new Swiper(reviews__carousel, {
@@ -140,69 +140,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Hero slider
 document.addEventListener("DOMContentLoaded", function () {
-  const heroBgs = document.querySelector(".hero__bgs");
+	const heroBgs = document.querySelector(".hero__bgs");
 
-  if (heroBgs && window.innerWidth > 599.98) {
-    const slides = heroBgs.querySelectorAll("img");
-    if (slides.length === 0) return;
+	if (heroBgs && window.innerWidth > 599.98) {
+		const slides = heroBgs.querySelectorAll("img");
+		if (slides.length === 0) return;
 
-    let current = 0;
+		let current = 0;
 
-    setInterval(() => {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }, 5000);
-  }
+		setInterval(() => {
+			slides[current].classList.remove("active");
+			current = (current + 1) % slides.length;
+			slides[current].classList.add("active");
+		}, 5000);
+	}
 });
 
 //Hero slider Mob
 document.addEventListener("DOMContentLoaded", function () {
-  const mheroBgs = document.querySelector(".mhero__bgs");
+	const mheroBgs = document.querySelector(".mhero__bgs");
 
-  if (mheroBgs && window.innerWidth <= 599.98) {
-    const slides = mheroBgs.querySelectorAll("img");
-    if (slides.length === 0) return;
+	if (mheroBgs && window.innerWidth <= 599.98) {
+		const slides = mheroBgs.querySelectorAll("img");
+		if (slides.length === 0) return;
 
-    let current = 0;
+		let current = 0;
 
-    setInterval(() => {
-      slides[current].classList.remove("active");
-      current = (current + 1) % slides.length;
-      slides[current].classList.add("active");
-    }, 4000);
-  }
+		setInterval(() => {
+			slides[current].classList.remove("active");
+			current = (current + 1) % slides.length;
+			slides[current].classList.add("active");
+		}, 4000);
+	}
 });
 
 //Gallery sliders
 document.addEventListener("DOMContentLoaded", function () {
-  const galleries = document.querySelectorAll(".gall__card");
-  if (galleries.length === 0) return;
+	const galleries = document.querySelectorAll(".gall__card");
+	if (galleries.length === 0) return;
 
-  const delay = 800;
-  const hold = 3500;
+	const delay = 800;
+	const hold = 3500;
 
-  let current = 0;
+	let current = 0;
 
-  function changeSlides() {
-    galleries.forEach((gallery, i) => {
-      setTimeout(() => {
-        const slides = gallery.querySelectorAll("img");
-        if (slides.length === 0) return;
+	function changeSlides() {
+		galleries.forEach((gallery, i) => {
+		setTimeout(() => {
+			const slides = gallery.querySelectorAll("img");
+			if (slides.length === 0) return;
 
-        const active = gallery.querySelector("img.active");
-        let index = Array.from(slides).indexOf(active);
-        active.classList.remove("active");
+			const active = gallery.querySelector("img.active");
+			let index = Array.from(slides).indexOf(active);
+			active.classList.remove("active");
 
-        index = (index + 1) % slides.length;
-        slides[index].classList.add("active");
-      }, i * delay);
-    });
+			index = (index + 1) % slides.length;
+			slides[index].classList.add("active");
+		}, i * delay);
+		});
 
-    setTimeout(changeSlides, galleries.length * delay + hold);
-  }
+		setTimeout(changeSlides, galleries.length * delay + hold);
+	}
 
-  changeSlides();
+	changeSlides();
 });
 
 //Team carousel
@@ -254,15 +254,46 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (content.style.maxHeight) {
 				content.style.maxHeight = null;
 				content.style.paddingTop = null;
-				//content.style.paddingBottom = null;
 				button.classList.remove('v_active');
 			} else {
 				content.style.maxHeight = content.scrollHeight + 30 + 'px';
 				content.style.paddingTop = '20px';
-				//content.style.paddingBottom = '20px';
 				button.classList.add('v_active');
 			}
 		});
+	});
+});
+
+//Toggle content
+document.addEventListener("DOMContentLoaded", function () {
+	const costWrap = document.querySelector(".cost__content-wrap");
+	const toggleBtn = document.querySelector(".cost__toogle-text");
+
+	if (!costWrap || !toggleBtn) return;
+
+	function initToggle() {
+		if (window.innerWidth <= 1199.98) {
+			costWrap.style.maxHeight = "0px";
+
+            toggleBtn.addEventListener("click", function () {
+                if (costWrap.style.maxHeight === "0px" || costWrap.style.maxHeight === "") {
+                    costWrap.style.maxHeight = costWrap.scrollHeight + "px";
+                    toggleBtn.classList.add("btn--acti");
+                } else {
+                    costWrap.style.maxHeight = "0px";
+                    toggleBtn.classList.remove("btn--acti");
+                }
+            });
+		} else {
+			costWrap.style.maxHeight = "none";
+			toggleBtn.classList.remove("btn--acti");
+		}
+	}
+
+	initToggle();
+
+	window.addEventListener("resize", function () {
+		initToggle();
 	});
 });
 

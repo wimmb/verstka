@@ -1209,6 +1209,11 @@ tr, td {
 	opacity: 1;
 }
 
+.order-sect {
+	display: flex;
+	flex-direction: column;
+}
+
 .info-sect {
 	padding: 40px 0;
 }
@@ -1822,8 +1827,44 @@ tr, td {
 	color: var(--blue-color);
 }
 
+.cost__content-wrap {
+	overflow: hidden;
+	transition: max-height 0.5s ease;
+}
+
+.cost__toogle {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.cost__toogle-text {
+	display: none;
+	padding: 3px 10px;
+	font-size: 16px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--dark2-color);
+	transition: all 0.3s ease;
+}
+
+.cost__toogle-text:hover {
+	color: var(--accent-color);
+}
+
+.cost__toogle-text.btn--acti .btn__text,
+.cost__toogle-text .btn__text2 {
+	display: none;
+}
+
+.cost__toogle-text.btn--acti .btn__text2 {
+	display: inherit;
+}
+
+.cost__btn-wrap {
+	margin-top: 35px;
+}
+
 .cost__btn {
-	margin-top: 40px;
 	min-width: 200px;
 }
 
@@ -2044,6 +2085,15 @@ tr, td {
 	.wehelp__card {
 		max-width: 300px;
 	}
+	.cost-sect .sect-header {
+		margin-bottom: 10px;
+	}
+	.cost__btn-wrap {
+		text-align: center;
+	}
+	.cost__toogle-text {
+		display: inline-block;
+	}
 }
 
 
@@ -2130,6 +2180,10 @@ tr, td {
 }
 
 @media only screen and (max-width: 991.98px) {
+	.info-sect {
+		order: 2;
+		padding: 30px 0;
+	}
 	.info__container {
 		flex-direction: column;
 		gap: 20px;
